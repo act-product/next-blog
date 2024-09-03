@@ -1,2 +1,0 @@
-# next-blog
-# next-blog
