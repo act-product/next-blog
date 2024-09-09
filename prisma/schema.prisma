@@ -16,7 +16,7 @@ datasource db {
 model Post {
   id        Int      @id @default(autoincrement())
   title     String
-  content   String
+  content   String   @db.Text //データベースレベルでのText型に変更
   thumbnail String?
   createdAt DateTime @default(now()) // 投稿日時（デフォルトで現在日時）
   updatedAt DateTime @updatedAt // 更新日時（自動更新）
