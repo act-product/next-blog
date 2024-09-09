@@ -12,3 +12,14 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  thumbnail String?
+  createdAt DateTime @default(now()) // 投稿日時（デフォルトで現在日時）
+  updatedAt DateTime @updatedAt // 更新日時（自動更新）
+
+  @@map("posts") // テーブル名を指定（オプション）
+}
