@@ -1,6 +1,8 @@
 import React from 'react';
 import { getPostById } from '../../actions/getPostById';
 import PostDetail from '../../components/PostDetail';
+import PostNotFound from '../not-found';
+
 
 interface PostPageProps {
     params: {
@@ -13,7 +15,8 @@ const PostPage: React.FC<PostPageProps> = async ({ params }) => {
     const post = await getPostById(id);
 
     if (!post) {
-        return <p>生地が見つかりません</p>;
+        //記事が見つからない場合はNot Foundページを返す
+        return <PostNotFound />;
     }
 
     return (
