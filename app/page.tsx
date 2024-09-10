@@ -1,6 +1,7 @@
 import React from 'react';
 import { getPosts } from './actions/getPosts';
 import PostItem from './components/PostItem';
+import Link from 'next/link';
 
 const Page = async () => {
 
@@ -13,14 +14,18 @@ const Page = async () => {
         <p>投稿はありません</p>
       ) : (
         posts.map(post => (
-          <PostItem
-            key={post.id}
-            title={post.title}
-            content={post.content}
-            thumbnail={post.thumbnail}
-            createdAt={post.createdAt}
-            updatedAt={post.updatedAt}
-          />
+          <div key={post.id}>
+            <PostItem
+              title={post.title}
+              content={post.content}
+              thumbnail={post.thumbnail}
+              createdAt={post.createdAt}
+              updatedAt={post.updatedAt}
+            />
+            <Link href={`/posts/${post.id}`}>
+              続きを読む
+            </Link>
+          </div>
         ))
       )}
     </div>

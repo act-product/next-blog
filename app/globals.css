@@ -55,3 +55,21 @@ body {
 .post-item small {
   color: #555;
 }
+
+.post-detail {
+  padding: 60px;
+}
+
+.post-detail img {
+  border-radius: 10px;
+}
+
+.post-detail h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.post-detail p {
+  font-size: 1em;
+  margin: 10px 0;
+}
