@@ -43,10 +43,16 @@
     "jsx": "preserve",
     "incremental": true,
     "outDir": "./dist",
-    "rootDir": "./"
+    "rootDir": "./",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
-    "prisma/seed.ts"
+    "prisma/seed.ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
