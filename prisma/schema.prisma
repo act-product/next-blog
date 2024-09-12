@@ -14,10 +14,10 @@ datasource db {
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String   @db.Text
-  thumbnail String?
+  id        Int      @id @default(autoincrement()) // 自動インクリメントID
+  title     String // タイトル
+  content   String // 内容
+  thumbnail String? // サムネイル画像 (任意フィールド)
   createdAt DateTime @default(now()) // 投稿日時（デフォルトで現在日時）
   updatedAt DateTime @updatedAt // 更新日時（自動更新）
 
