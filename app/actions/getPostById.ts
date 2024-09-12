@@ -7,11 +7,8 @@ interface Post {
 export async function getPostById(id: number) {
     try {
         const post = await prisma.post.findUnique({
-            where: {
-                id: id,
-            },
+            where: { id: id, },
         });
-
         if (post) {
             return post;
         }
@@ -19,8 +16,5 @@ export async function getPostById(id: number) {
     } catch (error) {
         console.error('IDからの記事取得に失敗しました', error);
         throw new Error('IDから記事を取得できません');
-
-
-
     }
 }
