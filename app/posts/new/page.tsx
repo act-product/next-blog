@@ -1,55 +1,57 @@
+
 "use client";
 
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { useState } from 'react';
+import { addPost } from '../../actions/addPost';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import React from 'react';
 
+// バリデーションスキーマ
 const postSchema = z.object({
     title: z.string().nonempty('タイトルは必須です'),
     content: z.string().nonempty('内容は必須です'),
-    image: z.instanceof(File).optional(),
+    image: z.any().optional(),
 });
+
+interface PostFormData {
+    title: string;
+    content: string;
+    image: FileList | null;
+}
 
 const NewPostPage = () => {
     const router = useRouter();
-    const [flashMessage, setFlashMessage] = useState<string | null>(null);
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm<PostFormData>({
         resolver: zodResolver(postSchema),
     });
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: PostFormData) => {
         const formData = new FormData();
         formData.append('title', data.title);
         formData.append('content', data.content);
-        if (data.image[0]) {
+        if (data.image && data.image[0]) {
             formData.append('image', data.image[0]);
         }
 
         try {
-            const res = await fetch('/api/posts', {
-                method: 'POST',
-                body: formData,
-            });
-
-            if (!res.ok) {
-                throw new Error('投稿に失敗しました');
-            }
-
-            const post = await res.json();
-            setFlashMessage('投稿しました');
-            router.push(`../posts/${post.id}`); // 詳細ページにリダイレクト
+            const post = await addPost(formData);
+            toast.success("投稿しました", { autoClose: 3000 }); // 投稿成功メッセージを表示
+            router.push(`../../posts/${post.id}`); // 投稿詳細ページにリダイレクト
         } catch (error) {
-            console.error('エラー:', error);
+            toast.error('投稿に失敗しました', { autoClose: 3000 }); // 投稿失敗メッセージを表示
+            console.error('Error creating post:', error);
         }
     };
 
     return (
         <div>
-            {flashMessage && (
-                <strong>{flashMessage}</strong>
-            )}
+            {/* トースト通知のコンテナ */}
+            <ToastContainer />
+
             <h1>新規投稿</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
