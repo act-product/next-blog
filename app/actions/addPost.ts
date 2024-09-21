@@ -1,4 +1,4 @@
-import prisma from '@/lib/prisma';
+import prisma from '../lib/prisma';
 import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
@@ -46,3 +46,5 @@ export async function addPost({ title, content, image }: AddPostInput) {
 
     return post;
 }
+
+export default addPost;
