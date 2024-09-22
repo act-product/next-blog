@@ -9,6 +9,7 @@ export async function getPostById(id: number) {
         const post = await prisma.post.findUnique({
             where: { id: id, },
         });
+        console.log('Post fetched by ID:', post);
         if (post) {
             return post;
         }
