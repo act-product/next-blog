@@ -11,7 +11,7 @@ export async function getPostById(id: number) {
                 id: id,
             },
         });
-
+        console.log('Post fetched by ID:', post);
         if (post) {
             return post;
         }
