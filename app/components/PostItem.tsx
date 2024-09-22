@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import defaultThumbnail from '../public/default-thumbnail.jpeg';
 interface PostItemProps {
     title: string;
@@ -12,7 +13,14 @@ const PostItem: React.FC<PostItemProps> = ({ title, content, thumbnail, createdA
 
     return (
         <div className="post-item">
-            <img src={thumbnail || defaultThumbnail} alt={title} style={{ width: '100%', height: 'auto' }} />
+            <Image
+                src={thumbnail || defaultThumbnail}
+                alt={title}
+                width={1280}
+                height={720}
+                layout="responsive"
+                objectFit="cover"
+            />
             <h2>{title}</h2>
             <p>{content.length > 100 ? content.slice(0, 100) + '...' : content}</p>
             <small>Posted on: {new Date(createdAt).toLocaleDateString()}</small><br />
