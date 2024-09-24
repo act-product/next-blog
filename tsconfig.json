@@ -5,23 +5,23 @@
       "dom.iterable",
       "esnext"
     ],
-    "target": "ES6",
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
-    "noEmit": false,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
     "esModuleInterop": true,
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
-    "jsx": "preserve",
-    "incremental": true,
-    "outDir": "./dist",
-    "rootDir": "./"
+    "isolatedModules": true,
+    "jsx": "preserve"
   },
   "include": [
-    "prisma/seed.ts"
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"
