@@ -2,7 +2,7 @@ import React from 'react';
 import { getPostById } from '../../actions/getPostById';
 import PostDetail from '../../components/PostDetail';
 import PostNotFound from '../not-found';
-
+import Link from 'next/link';
 
 interface PostPageProps {
     params: {
@@ -20,13 +20,19 @@ const PostPage: React.FC<PostPageProps> = async ({ params }) => {
     }
 
     return (
-        <PostDetail
-            title={post.title}
-            content={post.content}
-            thumbnail={post.thumbnail}
-            createdAt={post.createdAt}
-            updatedAt={post.updatedAt}
-        />
+        <div>
+            <PostDetail
+                title={post.title}
+                content={post.content}
+                thumbnail={post.thumbnail}
+                createdAt={post.createdAt}
+                updatedAt={post.updatedAt}
+            />
+            <Link href={`/posts/${id}/edit`}>
+                <button>編集</button>
+            </Link>
+        </div>
+
     );
 };
 
