@@ -10,7 +10,10 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node --compilerOptions '{\"isolatedModules\":false}' prisma/seed.ts",
+    "exclude": [
+      "prisma/seed.ts"
+    ]
   },
   "dependencies": {
     "@faker-js/faker": "^9.0.0",
