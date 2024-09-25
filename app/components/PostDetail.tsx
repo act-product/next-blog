@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface PostDetailProps {
     title: string;
@@ -15,7 +16,7 @@ const PostDetail: React.FC<PostDetailProps> = ({ title, content, thumbnail, crea
         <div className="post-detail">
             <h1>{title}</h1>
             <img
-                src={thumbnail || defaultThumbnail}
+                src={thumbnail || '/default-thumbnail.jpeg'}
                 alt={title}
                 style={{ width: '100%', height: 'auto' }}
             />
