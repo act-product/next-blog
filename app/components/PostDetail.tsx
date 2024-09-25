@@ -4,8 +4,8 @@ interface PostDetailProps {
     title: string;
     content: string;
     thumbnail?: string;
-    createdAt: string;
-    updatedAt: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 const PostDetail: React.FC<PostDetailProps> = ({ title, content, thumbnail, createdAt, updatedAt }) => {
