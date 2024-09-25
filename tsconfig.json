@@ -28,9 +28,7 @@
     }
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "prisma/seed.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": [
