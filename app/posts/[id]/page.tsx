@@ -1,6 +1,8 @@
 import React from 'react';
 import { getPostById } from '../../actions/getPostById';
 import PostDetail from '../../components/PostDetail';
+import Link from 'next/link';
+import { notFound } from 'next/navigation'
 
 interface PostPageProps {
     params: {
@@ -13,17 +15,26 @@ const PostPage: React.FC<PostPageProps> = async ({ params }) => {
     const post = await getPostById(id);
 
     if (!post) {
-        return <p>記事が見つかりません</p>;
+        //記事が見つからない場合はNot Foundページを返す
+        return notFound()
     }
 
     return (
-        <PostDetail
-            title={post.title}
-            content={post.content}
-            thumbnail={post.thumbnail}
-            createdAt={post.createdAt}
-            updatedAt={post.updatedAt}
-        />
+        <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <h1>{post.title}</h1>
+                <Link href={`/posts/${id}/edit`}>
+                    <button style={{ marginLeft: '10px' }}>編集</button>
+                </Link>
+            </div>
+            <PostDetail
+                content={post.content}
+                thumbnail={post.thumbnail}
+                createdAt={post.createdAt}
+                updatedAt={post.updatedAt}
+            />
+        </div>
+
     );
 };
 
