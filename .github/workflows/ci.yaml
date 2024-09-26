@@ -2,6 +2,10 @@ name: Type Check
 
 on: [pull_request]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   typecheck:
     name: Run type check
@@ -11,9 +15,19 @@ jobs:
 
       - name: Use Node.js
         uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
 
       - name: Install dependencies
-        run: npm i
+        run: npm ci
 
       - name: Setup reviewdog
         uses: reviewdog/action-setup@v1
@@ -26,6 +40,6 @@ jobs:
 
       - name: Run build
         env:
-            REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm run build 2>&1 | reviewdog -f=general -reporter=github-pr-review -fail-on-error=false
+          npm run build 2>&1 | reviewdog -f=eslint -reporter=github-pr-review -fail-on-error=false
