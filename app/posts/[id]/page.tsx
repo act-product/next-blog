@@ -13,7 +13,7 @@ const PostPage: React.FC<PostPageProps> = async ({ params }) => {
     const post = await getPostById(id);
 
     if (!post) {
-        return <p>生地が見つかりません</p>;
+        return <p>記事が見つかりません</p>;
     }
 
     return (
