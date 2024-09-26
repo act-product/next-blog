@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import defaultThumbnail from '../src/assets/default-thumbnail.jpeg';
+import defaultThumbnail from '../public/default-thumbnail.jpeg';
 
 interface PostItemProps {
     title: string;
