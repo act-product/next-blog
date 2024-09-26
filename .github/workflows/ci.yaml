@@ -1,0 +1,31 @@
+name: Type Check
+
+on: [pull_request]
+
+jobs:
+  typecheck:
+    name: Run type check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Setup reviewdog
+        uses: reviewdog/action-setup@v1
+
+      - name: Run type check
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx tsc --pretty --noEmit | reviewdog -f=tsc -reporter=github-pr-review -fail-on-error=false
+
+      - name: Run build
+        env:
+            REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm run build 2>&1 | reviewdog -f=general -reporter=github-pr-review -fail-on-error=false
