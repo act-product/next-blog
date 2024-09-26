@@ -1,13 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import defaultThumbnail from '/public/default-thumbnail.jpeg';
+import defaultThumbnail from '../src/assets/default-thumbnail.jpeg';
 
 interface PostItemProps {
     title: string;
     content: string;
     thumbnail?: string;
-    createdAt: string;
-    updatedAt: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 const PostItem: React.FC<PostItemProps> = ({ title, content, thumbnail, createdAt, updatedAt }) => {
