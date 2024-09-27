@@ -5,7 +5,7 @@ import defaultThumbnail from '../public/default-thumbnail.jpeg';
 interface PostDetailProps {
     title: string;
     content: string;
-    thumbnail?: string;
+    thumbnail?: string | undefined | null;
     createdAt: Date;
     updatedAt: Date;
 }

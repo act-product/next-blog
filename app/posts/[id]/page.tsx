@@ -28,6 +28,7 @@ const PostPage: React.FC<PostPageProps> = async ({ params }) => {
                 </Link>
             </div>
             <PostDetail
+                title={post.title}
                 content={post.content}
                 thumbnail={post.thumbnail}
                 createdAt={post.createdAt}

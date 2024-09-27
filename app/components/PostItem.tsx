@@ -5,7 +5,7 @@ import defaultThumbnail from '../public/default-thumbnail.jpeg';
 interface PostItemProps {
     title: string;
     content: string;
-    thumbnail?: string | null;
+    thumbnail?: string | undefined | null;
     createdAt: Date;
     updatedAt: Date;
 }
