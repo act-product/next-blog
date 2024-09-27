@@ -1,9 +1,5 @@
 import prisma from '../lib/prisma';
 
-interface Post {
-    id: number;
-}
-
 export async function getPostById(id: number) {
     try {
         return await prisma.post.findUnique({

@@ -19,8 +19,8 @@ const Page = async () => {
               title={post.title}
               content={post.content}
               thumbnail={post.thumbnail}
-              createdAt={post.createdAt}
-              updatedAt={post.updatedAt}
+              createdAt={new Date(post.createdAt)}
+              updatedAt={new Date(post.updatedAt)}
             />
             <Link href={`/posts/${post.id}`}>
               続きを読む

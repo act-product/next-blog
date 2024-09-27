@@ -24,8 +24,8 @@ model Post {
 =======
 >>>>>>> 4f133f1313420d5b9e063ecaa0fc39e841e1ae8f
   id        Int      @id @default(autoincrement()) // 自動インクリメントID
-  title     String // タイトル
-  content   String // 内容
+  title     String
+  content   String   @db.Text
   thumbnail String? // サムネイル画像 (任意フィールド)
 <<<<<<< HEAD
 >>>>>>> 87ff40fec1f026903e3d322702b4330bb7e81f96
@@ -34,5 +34,5 @@ model Post {
   createdAt DateTime @default(now()) // 投稿日時（デフォルトで現在日時）
   updatedAt DateTime @updatedAt // 更新日時（自動更新）
 
-  @@map("posts") // テーブル名を指定（オプション）
+  @@map("posts")
 }
