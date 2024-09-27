@@ -1,23 +1,26 @@
 import React from 'react';
+import Image from 'next/image';
+import defaultThumbnail from '../public/default-thumbnail.jpeg';
 
 interface PostDetailProps {
     title: string;
     content: string;
-    thumbnail?: string;
-    createdAt: string;
-    updatedAt: string;
+    thumbnail?: string | undefined | null;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 const PostDetail: React.FC<PostDetailProps> = ({ title, content, thumbnail, createdAt, updatedAt }) => {
-    const defaultThumbnail = '/default-thumbnail.jpeg';
-
     return (
         <div className="post-detail">
             <h1>{title}</h1>
-            <img
+            <Image
                 src={thumbnail || defaultThumbnail}
                 alt={title}
-                style={{ width: '100%', height: 'auto' }}
+                width={1280}
+                height={720}
+                layout="responsive"
+                objectFit="cover"
             />
             <p>{content}</p>
             <small>Posted on: {new Date(createdAt).toLocaleDateString()}</small><br />
