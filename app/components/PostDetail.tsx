@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import defaultThumbnail from '../public/default-thumbnail.jpeg';
 
-interface PostItemProps {
+interface PostDetailProps {
     title: string;
     content: string;
     thumbnail?: string | undefined | null;
@@ -10,10 +10,10 @@ interface PostItemProps {
     updatedAt: Date;
 }
 
-const PostItem: React.FC<PostItemProps> = ({ title, content, thumbnail, createdAt, updatedAt }) => {
-
+const PostDetail: React.FC<PostDetailProps> = ({ title, content, thumbnail, createdAt, updatedAt }) => {
     return (
-        <div className="post-item">
+        <div className="post-detail">
+            <h1>{title}</h1>
             <Image
                 src={thumbnail || defaultThumbnail}
                 alt={title}
@@ -22,13 +22,11 @@ const PostItem: React.FC<PostItemProps> = ({ title, content, thumbnail, createdA
                 layout="responsive"
                 objectFit="cover"
             />
-            <h2>{title}</h2>
-            <p>{content.length > 100 ? content.slice(0, 100) + '...' : content}</p>
+            <p>{content}</p>
             <small>Posted on: {new Date(createdAt).toLocaleDateString()}</small><br />
             <small>Updated on: {new Date(updatedAt).toLocaleDateString()}</small>
-            <hr />
         </div>
     );
 };
 
-export default PostItem;
+export default PostDetail;

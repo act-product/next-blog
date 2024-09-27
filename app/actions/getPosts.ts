@@ -1,5 +1,3 @@
-// app/actions/getPosts.ts
-
 import prisma from '../lib/prisma';
 
 export async function getPosts() {

@@ -3,7 +3,9 @@ import prisma from '../lib/prisma';
 export async function getPostById(id: number) {
     try {
         return await prisma.post.findUnique({
-            where: { id: id, }
+            where: {
+                id: id,
+            },
         });
     } catch (error) {
         console.error('IDからの記事取得に失敗しました', error);
