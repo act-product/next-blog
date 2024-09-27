@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+} */
+
+
+.post-list {
+  padding: 20px;
+}
+
+.post-item {
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.post-item img {
+  border-radius: 4px;
+}
+
+.post-item h2 {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.post-item p {
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+.post-item small {
+  color: #555;
+}
+
+.post-detail {
+  padding: 60px;
+}
+
+.post-detail img {
+  border-radius: 10px;
+}
+
+.post-detail h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.post-detail p {
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+.post-not-found {
+  text-align: center;
+  padding: 50px;
+}
+
+.post-not-found h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.post-not-found p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.post-not-found button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  background-color: #2f353c;
+  color: white;
+  border-radius: 10px;
+}
