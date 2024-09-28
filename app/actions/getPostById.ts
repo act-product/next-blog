@@ -11,5 +11,5 @@ export async function getPostById(id: number) {
         console.error('IDからの記事取得に失敗しました', error);
         throw new Error('IDから記事を取得できません');
     }
-
+}
 
