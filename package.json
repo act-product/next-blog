@@ -10,15 +10,19 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^9.0.0",
+    "@hookform/resolvers": "^3.9.0",
     "@prisma/client": "^5.19.1",
     "next": "14.2.8",
     "react": "^18",
     "react-dom": "^18",
-    "uuid": "^10.0.0"
+    "react-hook-form": "^7.53.0",
+    "react-toastify": "^10.0.5",
+    "uuid": "^10.0.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",
