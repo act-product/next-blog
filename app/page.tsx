@@ -25,6 +25,9 @@ const Page = async () => {
             <Link href={`/posts/${post.id}`}>
               続きを読む
             </Link>
+            <Link href={`/posts/${post.id}/edit`} style={{ marginLeft: '10px' }}>
+              編集
+            </Link>
           </div>
         ))
       )}
