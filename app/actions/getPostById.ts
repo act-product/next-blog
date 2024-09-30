@@ -1,3 +1,4 @@
+'use server';
 import prisma from '../lib/prisma';
 
 export async function getPostById(id: number) {
@@ -12,3 +13,4 @@ export async function getPostById(id: number) {
         throw new Error('IDから記事を取得できません');
     }
 }
+

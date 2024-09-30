@@ -60,7 +60,6 @@
 'use server';
 
 import prisma from '../lib/prisma';
-import { NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs/promises';
 
@@ -98,9 +97,12 @@ export async function editPost(id: number, formData: FormData) {
             },
         });
 
-        return NextResponse.json(updatedPost);
+        return {
+            success: true,
+            post: updatedPost,
+        };
     } catch (error) {
         console.error('Error updating post:', error);
-        return NextResponse.error();
+        return { success: false, error: 'Failed to update post' };
     }
 }
