@@ -12,3 +12,4 @@ export async function getPostById(id: number) {
         throw new Error('IDから記事を取得できません');
     }
 }
+
