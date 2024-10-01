@@ -17,8 +17,6 @@
     "@hookform/resolvers": "^3.9.0",
     "@prisma/client": "^5.19.1",
     "next": "^14.2.13",
-    "postcss-loader": "^8.1.1",
-    "postcss-selector-parser": "^6.1.2",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
