@@ -10,7 +10,7 @@ export async function editPost(id: number, formData: FormData) {
     const thumbnailFile = formData.get('thumbnail') as File | null;
 
     try {
-        let thumbnailPath = null;
+        const thumbnailPath = null;
 
         // サムネイル画像がある場合
         if (thumbnailFile) {
