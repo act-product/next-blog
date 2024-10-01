@@ -12,8 +12,8 @@ import React, { useEffect, useState } from 'react';
 
 // Zodスキーマの定義
 const postSchema = z.object({
-    title: z.string().nonempty('タイトルは必須です'),
-    content: z.string().nonempty('内容は必須です'),
+    title: z.string().min(1, 'タイトルは必須です'),
+    content: z.string().min(1, '内容は必須です'),
     thumbnail: z.any().optional(),
 });
 
