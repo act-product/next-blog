@@ -21,6 +21,7 @@ interface PostFormData {
     title: string;
     content: string;
     thumbnail: FileList | null;
+    existingThumbnail?: string | null;
 }
 
 const EditPostPage = ({ params }: { params: { id: string } }) => {
@@ -38,7 +39,12 @@ const EditPostPage = ({ params }: { params: { id: string } }) => {
                 console.log("Fetching post with ID:", postId); // 追加
                 const postData = await getPostById(postId);
                 if (postData) {
-                    setPost(postData);
+                    setPost({
+                        title: postData.title,
+                        content: postData.content,
+                        thumbnail: null,
+                        existingThumbnail: postData.thumbnail
+                    });
                     setValue("title", postData.title);
                     setValue("content", postData.content);
                 } else {
