@@ -23,9 +23,6 @@ const PostPage: React.FC<PostPageProps> = async ({ params }) => {
         <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h1>{post.title}</h1>
-                <Link href={`/posts/${id}/edit`}>
-                    <button style={{ marginLeft: '10px' }}>編集</button>
-                </Link>
             </div>
             <PostDetail
                 title={post.title}
