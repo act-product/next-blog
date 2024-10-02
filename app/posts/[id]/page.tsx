@@ -1,8 +1,14 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import { getPostById } from '../../actions/getPostById';
 import PostDetail from '../../components/PostDetail';
 import Link from 'next/link';
-import { notFound } from 'next/navigation'
+import { notFound } from 'next/navigation';
+import { deletePost } from '../../actions/deletePost';
+import { useRouter } from 'next/navigation';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface PostPageProps {
     params: {
@@ -10,13 +16,40 @@ interface PostPageProps {
     };
 }
 
-const PostPage: React.FC<PostPageProps> = async ({ params }) => {
+const PostPage: React.FC<PostPageProps> = ({ params }) => {
+    const router = useRouter();
+    const [post, setPost] = useState<any>(null);
     const id = parseInt(params.id, 10);
-    const post = await getPostById(id);
+
+    useEffect(() => {
+        const fetchPost = async () => {
+            const postData = await getPostById(id);
+            if (postData) {
+                setPost(postData);
+            } else {
+                notFound();
+            }
+        };
+        fetchPost();
+    }, [id]);
+
+    const handleDelete = async () => {
+        if (confirm('本当に削除しますか？')) {
+            try {
+                await deletePost(Number(params.id));
+                toast.success("削除しました", { autoClose: 3000 });
+                setTimeout(() => {
+                    router.push('/');
+                }, 3000);
+            } catch (error) {
+                toast.error('削除に失敗しました', { autoClose: 3000 });
+                console.error('Error deleting post:', error);
+            }
+        }
+    };
 
     if (!post) {
-        //記事が見つからない場合はNot Foundページを返す
-        return notFound()
+        return null;
     }
 
     return (
@@ -32,7 +65,6 @@ const PostPage: React.FC<PostPageProps> = async ({ params }) => {
                 updatedAt={post.updatedAt}
             />
         </div>
-
     );
 };
 
